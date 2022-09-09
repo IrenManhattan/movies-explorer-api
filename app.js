@@ -8,6 +8,7 @@ const { errors } = require('celebrate');
 const { corsOptions, MONGO_URL, PORT } = require('./utils/config');
 
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const limiter = require('./middlewares/limiter');
 const errorHandler = require('./middlewares/errorHandler');
 
 const router = require('./routes/routes');
@@ -17,6 +18,8 @@ const app = express();
 mongoose.connect(MONGO_URL, { useNewUrlParser: true });
 
 app.use(requestLogger);
+
+app.use(limiter);
 
 app.use(cors(corsOptions));
 
