@@ -64,11 +64,7 @@ module.exports.getUsers = (req, res, next) => {
       return res.send(user);
     })
     .catch((err) => {
-      if (err.name === 'CastError') {
-        next(new ValidationError(incorrectData));
-      } else {
-        next(err);
-      }
+      next(err);
     });
 };
 

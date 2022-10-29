@@ -11,12 +11,12 @@ router.post('/signup', createUserValidation, createUser);
 
 router.post('/signin', loginUserValidation, loginUser);
 
-router.use('/users', auth, userRouter);
+router.use(auth);
 
-router.use('/movies', auth, movieRouter);
+router.use('/users', userRouter);
 
-router.all('*', auth, (_req, _res, next) => {
+router.use('/movies', movieRouter);
+
+router.all('*', (_req, _res, next) => {
   next(new NotFoundError(pageNotFound));
 });
-
-module.exports = router;
