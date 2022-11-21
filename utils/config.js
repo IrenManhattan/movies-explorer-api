@@ -6,7 +6,7 @@ module.exports.corsOptions = {
   optionSuccessStatus: 200,
 };
 
-const { PORT = 3000, MONGO_URL = 'mongodb://localhost:27017/moviesdb' } = process.env;
-module.exports = { PORT, MONGO_URL };
+const { MONGO_URL = 'mongodb://localhost:27017/moviesdb' } = process.env;
+module.exports = { PORT: 3001, MONGO_URL };
 
 module.exports.secretKey = 'dev-secret';
